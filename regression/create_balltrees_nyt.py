@@ -19,14 +19,11 @@ OUTPUT_FOLDER = MODEL_FOLDER #Folder to save the balltrees and distance matrices
 LEAF_SIZE = 2 #Parameter for balltrees, affects speed of balltrees (but not accuracy)
 
 print('Prepare all training data...')
-#Prepare all training data
 with open(NYT_FILE,'r') as domainFile:
     sentences = domainFile.readlines()
     sentences = [[word for word in i[:-1].split(' ')] for i in sentences] #tokenize on space
 
 print('Load all models...')
-#Load all pre-trained models
-all_models = []
 names = []
 for algorithm in ['w2v','glove','ppmi']:
     for dimension in [50,100,200,400,800]:
@@ -70,22 +67,23 @@ for name,model in zip(names,all_models):
             distances[i][j] = distances[j][i] = 1.0 - (np.dot(model[word1],model[word2]) * inverseMagnitudes[word1] * inverseMagnitudes[word2])
 
     #Save distance matrix for future use
-    with open(OUTPUT_FOLDER + 'distances_'+name+'.pkl','wb') as pickleFile:
-        pickle.dump(distances,pickleFile)
+    if domain != 'all':
+		with open(OUTPUT_FOLDER + 'distances_'+name+'.pkl','wb') as pickleFile:
+			pickle.dump(distances,pickleFile)
+	else: #domain == 'all'
+		for i in range(1000,len(wordList)+999),1000):
+			print('Saving',i-1000,'to',i)
+			with open(OUTPUT_FOLDER + 'distances_'+name+'.pkl','wb') as pickleFile:
+				pickle.dump(distances[i-1000:i],pickleFile)
 
-#Define distance function for balltree
-#Note: Distances (matrix doubly indexed by word indices) needs to be defined
-def mydist(x, y):
-    return distances[int(x[0])][int(y[0])]
+	#Define distance function for balltree
+	#Note: Distances (matrix doubly indexed by word indices) needs to be defined
+	def mydist(x, y):
+		return distances[int(x[0])][int(y[0])]
 
-print('Pre-buid balltrees...')
-#Pre-build balltrees for all embedding spaces
-for name in names:
-    print(name)
-    with open(OUTPUT_FOLDER + 'distances_'+name+'.pkl','rb') as pickleFile:
-        distances = pickle.load(pickleFile)
-    balltree = BallTree([[i] for i in range(len(wordList))],metric='pyfunc',func=mydist,leaf_size=LEAF_SIZE) #Leaf size is adjustable
+	print('Pre-buid balltrees...')
+	balltree = BallTree([[i] for i in range(len(wordList))],metric='pyfunc',func=mydist,leaf_size=LEAF_SIZE) #Leaf size is adjustable
 
-    #Save balltree for future use (always need to define distance func before loading balltrees)
-    with open(OUTPUT_FOLDER+name+'_balltree'+'.pkl', 'wb') as pickle_file:
-        pickle.dump(balltree,pickle_file)
+	#Save balltree for future use (always need to define distance func before loading balltrees)
+	with open(OUTPUT_FOLDER+name+'_balltree'+'.pkl', 'wb') as pickle_file:
+		pickle.dump(balltree,pickle_file)
