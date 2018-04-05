@@ -54,6 +54,8 @@ def getPPMI(cooccur,wordList):
 
    print('Calculating SVD...')
    #Return full SVD
+   #NOTE: If your vocabulary size is less than 800, the next line won't work. Change k to be less than 800 dimensions (and less than your vocabulary size).
+   #Here, k is set to be the largest embedding dimension that we want to consider.
    (U,S,V) = svds(ppmi,k=800)
 
    return (U,S)
