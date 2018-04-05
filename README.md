@@ -17,4 +17,4 @@ year = {2018}
 
 **example.py**: A toy example of how to use the stability code
 
-**Regression Model**: Code to replicate the regression model found in the paper
+**Regression Model**: Code to replicate the regression model found in the paper (Quick Start guide [regression/README.md](here))
