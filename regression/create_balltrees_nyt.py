@@ -68,7 +68,7 @@ for name,model in zip(names,all_models):
             distances[i][j] = distances[j][i] = 1.0 - (np.dot(model[word1],model[word2]) * inverseMagnitudes[word1] * inverseMagnitudes[word2])
 
     #Save distance matrix for future use
-    if domain != 'all':
+    if NYT_DOMAIN != 'all':
         with open(OUTPUT_FOLDER + 'distances_'+name+'.pkl','wb') as pickleFile:
             pickle.dump(distances,pickleFile)
     else: #domain == 'all'

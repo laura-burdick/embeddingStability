@@ -66,16 +66,16 @@ for name,model in zip(names,all_models):
         with open(OUTPUT_FOLDER + 'distances_'+name+'_i'+str(i)+'.pkl','wb') as pickleFile:
             pickle.dump(distances[i-1000:i],pickleFile)
 
-	#Define distance function for balltree
-	#Note: Distances (matrix doubly indexed by word indices) needs to be defined
-	def mydist(x, y):
-		return distances[int(x[0])][int(y[0])]
+    #Define distance function for balltree
+    #Note: Distances (matrix doubly indexed by word indices) needs to be defined
+    def mydist(x, y):
+        return distances[int(x[0])][int(y[0])]
 
-	print('Pre-buiding balltree...')
-	#Pre-build balltrees for all embedding spaces
-	balltree = BallTree([[i] for i in range(len(wordList))],metric='pyfunc',func=mydist,leaf_size=LEAF_SIZE) #Leaf size is adjustable
+    print('Pre-buiding balltree...')
+    #Pre-build balltrees for all embedding spaces
+    balltree = BallTree([[i] for i in range(len(wordList))],metric='pyfunc',func=mydist,leaf_size=LEAF_SIZE) #Leaf size is adjustable
 
-	print('Saving balltree...')
-	#Save balltree for future use (always need to define distance func before loading balltrees)
-	with open(OUTPUT_FOLDER+name+'_balltree'+'.pkl', 'wb') as pickle_file:
-		pickle.dump(balltree,pickle_file)
+    print('Saving balltree...')
+    #Save balltree for future use (always need to define distance func before loading balltrees)
+    with open(OUTPUT_FOLDER+name+'_balltree'+'.pkl', 'wb') as pickle_file:
+        pickle.dump(balltree,pickle_file)
