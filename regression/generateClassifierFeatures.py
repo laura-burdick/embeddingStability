@@ -279,7 +279,7 @@ with open(EUROPARL_WORDLIST_FILE,'rb') as pickleFile:
 
 print('Loading shared word list...')
 with open(SHARED_WORDLIST_FILE,'rb') as pickleFile:
-	words = pickle.load(pickleFile)
+    words = pickle.load(pickleFile)
 
 print('Count words in each domain...')
 #Count the number of words in each domain (needed for feature extraction)
@@ -415,11 +415,11 @@ for index in range(start_index,end_index):
 
                             all_features[(word,name1,name2)] = (features,target)
 
-	if index > 0 and index % 500 == 0:
-		print('saving')
-		with open(OUTPUT_FOLDER+'all_features'+str(index-500)+'_'+str(index)+'.pkl','wb') as pickleFile:
-			pickle.dump(all_features,pickleFile)
-			all_features = {}
+    if index > 0 and index % 500 == 0:
+        print('saving')
+        with open(OUTPUT_FOLDER+'all_features'+str(index-500)+'_'+str(index)+'.pkl','wb') as pickleFile:
+            pickle.dump(all_features,pickleFile)
+            all_features = {}
 
 print('saving')
 with open(OUTPUT_FOLDER+'all_features_end.pkl','wb') as pickleFile:

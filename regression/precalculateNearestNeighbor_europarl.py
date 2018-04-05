@@ -5,7 +5,7 @@
 import pickle
 from sklearn.neighbors import BallTree
 import numpy as np
-from tqdm import tqdm
+from tqdm import tqdm,trange
 
 # @TODO Change these variables before running
 WORDLIST_FILE = '/local/embedding_datasets/europarl/metaClassifier/wordList.pkl' #Location of pickled wordlist (see getWordList.py)
@@ -28,8 +28,8 @@ for algorithm in ['w2v','glove','ppmi']:
 			print(name)
 		
 			print('Loading distances...')
-			distances = np.zeros((len(wordList),len(wordList))
-			for index in tqdm(range(1000,len(wordList)+999,1000)):
+			distances = np.zeros((len(wordList),len(wordList)))
+			for index in trange(1000,len(wordList)+999,1000):
 				filename = DISTANCES_FOLDER+'distances_' + name + '_i' + str(index) + '.pkl'
 				with open(filename,'rb') as pickleFile:
 					if index > len(wordList):

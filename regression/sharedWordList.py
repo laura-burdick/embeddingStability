@@ -21,8 +21,8 @@ for domain in domains:
     with open(NYT_FOLDER+domain+'.data','r') as domainFile:
         sentences = domainFile.readlines()
         data[domain] = [i[:-1].split(' ') for i in sentences] #tokenize on space
-	with open(NYT_WORDLIST_FOLDER+domain+'_wordList.pkl','rb') as pickleFile:
-		wordlists.append(pickle.load(pickleFile))
+    with open(NYT_WORDLIST_FOLDER+domain+'_wordList.pkl','rb') as pickleFile:
+        wordlists.append(pickle.load(pickleFile))
 
 print('Europarl')
 domains.append('Europarl')
@@ -30,9 +30,9 @@ with open(EUROPARL_FILE,'r') as europarl:
     sentences = europarl.readlines()
     data['Europarl'] = [i[:-1].split(' ') for i in sentences]
 with open(EUROPARL_WORDLIST_FILE,'rb') as pickleFile:
-	wordlists.append(pickle.load(pickleFile))
+    wordlists.append(pickle.load(pickleFile))
 
 combined = set(wordlists[0]) & set(wordlists[1]) & set(wordlists[2]) & set(wordlists[3]) & set(wordlists[4]) & set(wordlists[5])
 print(len(combined))
 with open(OUTPUT_FILE,'wb') as pickleFile:
-	pickle.dump(list(combined),pickleFile)
+    pickle.dump(list(combined),pickleFile)
