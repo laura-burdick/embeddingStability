@@ -73,7 +73,6 @@ for name,model in zip(names,all_models):
             pickle.dump(distances,pickleFile)
     else: #domain == 'all'
         for i in range(1000,len(wordList)+999,1000):
-            print('Saving',i-1000,'to',i)
             with open(OUTPUT_FOLDER + 'distances_'+name+'.pkl','wb') as pickleFile:
                 pickle.dump(distances[i-1000:i],pickleFile)
 

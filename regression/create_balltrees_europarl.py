@@ -62,7 +62,6 @@ for name,model in zip(names,all_models):
 
     #Save distance matrix for future use
     for i in range(1000,len(wordList)+999,1000):
-        print('Saving',i-1000,'to',i)
         with open(OUTPUT_FOLDER + 'distances_'+name+'_i'+str(i)+'.pkl','wb') as pickleFile:
             pickle.dump(distances[i-1000:i],pickleFile)
 
