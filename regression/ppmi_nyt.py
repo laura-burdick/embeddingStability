@@ -1,7 +1,9 @@
 # Author: Laura Wendlandt
+# Dependencies: numpy
 # Train 5 embedding spaces (5 embedding sizes) using PPMI on NYT
 # Note: to reproduce the regression model, this script must be run 6 different times (one for each different NYT domain)
 
+import numpy as np
 import pickle
 from collections import Counter
 import math
