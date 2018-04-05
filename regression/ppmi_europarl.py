@@ -48,15 +48,15 @@ def getPPMI(cooccur,wordList):
             pmi = math.log((cooccur[i][j]*dMagnitude)/(singleCounts[i]*singleCounts[j]),2)
             if pmi > 0:
                ppmi[i][j] = ppmi[j][i] = pmi
-   
-    print('Converting to sparse matrix...')
-    ppmi = sparse.csr_matrix(ppmi)
 
-    print('Calculating SVD...')
-    #Return full SVD
-    (U,S,V) = svds(ppmi,k=800)
+   print('Converting to sparse matrix...')
+   ppmi = sparse.csr_matrix(ppmi)
 
-    return (U,S)
+   print('Calculating SVD...')
+   #Return full SVD
+   (U,S,V) = svds(ppmi,k=800)
+
+   return (U,S)
 
 def train_ppmi(U,S,wordList,embeddingSize,name):
     filenames = []
