@@ -28,7 +28,10 @@ for algorithm in ['w2v','glove','ppmi']:
     for dimension in [50,100,200,400,800]:
         if algorithm == 'ppmi':
             name = algorithm + '_' + str(dimension)
-        else:
+               with open(MODEL_FOLDER+name+'.pkl','rb') as pickleFile:
+                all_models.append(pickle.load(pickleFile))
+                names.append(name)
+       else:
             for seed in [2518,2548,2590,29,401]:
                 name = algorithm + '_' + str(dimension) + '_' + str(seed)
 
