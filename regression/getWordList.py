@@ -5,8 +5,8 @@ from collections import Counter
 import pickle
 
 # @TODO Change these variables before running
-TEXT_FILE = '/local/embedding_datasets/nyt_corpus/processed/top5.data' #Text file, one sentence per line, already tokenized with tokens separated by spaces
-OUTPUT_FOLDER = '/local/embedding_datasets/nyt_corpus/' #Where the pickled wordlist should be saved
+TEXT_FILE = '/local/embedding_datasets/europarl/europarl_processed.txt' #Text file, one sentence per line, already tokenized with tokens separated by spaces
+OUTPUT_FILE = '/local/embedding_datasets/europarl/europarl_wordList.pkl' #Where the pickled wordlist should be saved
 
 # Generate word list from training data
 #
@@ -36,5 +36,5 @@ print('Getting word list...')
 wordList = getWordList(sentences)
 
 print('Saving word list...')
-with open(OUTPUT_FOLDER+'wordList.pkl','wb') as pickleFile:
+with open(OUTPUT_FILE,'wb') as pickleFile:
 	pickle.dump(wordList,pickleFile)
