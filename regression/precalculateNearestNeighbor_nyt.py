@@ -49,6 +49,7 @@ for algorithm in ['w2v','glove','ppmi']:
 				balltree = pickle.load(pickleFile)
 
 			print('Calculating nearest neighbors...')
+			# NOTE: This doesn't work with Python 2.7 - see https://github.com/scikit-learn/scikit-learn/issues/4360
 			nearestNeighbors = {}
 			for i in tqdm(range(len(wordList))):
 				dist,ind = balltree.query(np.array([i]).reshape(1,-1),k=11)
