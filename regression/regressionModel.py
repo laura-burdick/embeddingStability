@@ -10,6 +10,8 @@ from tqdm import tqdm
 dataFolder = '/local/embedding_datasets/metaClassifier/' #Location of output feature files
 pickledFiles = ['all_features_take2_0_500','all_features_take2_500_1000','all_features_take2_1000_1500','all_features_take2_1500_2000','all_features_take2_2000_2500','all_features_take2_2500_2521'] #all output feature files
 OUTPUT_FILE = dataFolder + 'regressionModel_take2.pkl' #Save regression model here
+TRAINING_DATA_FILE = dataFolder + 'X.pkl' #Where to save the training data (used for calculating R^2 later on)
+TRAINING_TARGET_FILE = dataFolder + 'y.pkl' #Where to save the labels for the training data (used for calculating R^2 later on)
 
 print('Reading in all features...')
 all_features = {}
@@ -25,6 +27,10 @@ for word,properties in tqdm(all_features.items()):
     stability = properties[1]
     X.append(features)
     y.append(stability)
+with open(TRAINING_DATA_FILE,'wb') as pickleFile:
+	pickle.dump(X,pickleFile)
+with open(TRAINING_TARGET_FILE,'wb') as pickleFile:
+	pickle.dump(y,pickleFile)
 
 model = Ridge(random_state=42)
 

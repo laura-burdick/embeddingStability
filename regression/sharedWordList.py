@@ -9,7 +9,7 @@ NYT_FOLDER = datasetFolder+'nyt_corpus/processed/' #All NYT domain data is here,
 EUROPARL_FILE = datasetFolder+'europarl/europarl_processed.txt' #All of English Europarl, one sentence per line, already tokenized with tokens separated by spaces
 NYT_WORDLIST_FOLDER = datasetFolder+'nyt_corpus/metaClassifier/' #Location of all NYT wordlists (see getWordList.py)
 EUROPARL_WORDLIST_FILE = datasetFolder+'europarl/wordList.pkl' #Location of Europarl wordlist
-OUTPUT_FILE = datasetFolder+'nyt_corpus/metaClassifier/combinedWordLists.pkl' #Output shared word list
+OUTPUT_FILE = datasetFolder+'nyt_corpus/metaClassifier/combinedWordList.pkl' #Output shared word list
 
 print('Prepare all training data...')
 #Prepare all training data

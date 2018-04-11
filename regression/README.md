@@ -19,21 +19,31 @@ The following files and instructions can be used to reproduce the regression mod
 	- For each domain file, run getWordList.py to generate a saved word list (e.g., run this for Europarl and for each NYT domain)
 
 2. Train embedding spaces
-	- Run w2v_europarl.py and w2v_nyt.py to train w2v embedding spaces
-	- Run ppmi_europarl.py and ppmi_nyt.py to train PPMI embedding spaces
+	- Run w2v_europarl.py and w2v_nyt.py to train w2v embedding spaces (Run w2v_nyt.py six different times - one for each different NYT domain)
+	- Run ppmi_europarl.py and ppmi_nyt.py to train PPMI embedding spaces (Run ppmi_nyt.py six different times - one for each different NYT domain)
 	- GloVe models were trained using original GloVe code (https://nlp.stanford.edu/projects/glove/), with a slight modification. The code was modified to take a random seed as an argument (used to seed the random number generator). Each model was then saved in the same format as the word2vec and PPMI models.
 
 3. Build balltrees for all embedding spaces (to speed up all nearest neighbor computation at a later step)
-	- Run create_balltrees_nyt.py and create_balltrees_europarl.py
+	- Run create_balltrees_nyt.py and create_balltrees_europarl.py (Run create_balltrees_nyt.py six different times - one for each different NYT domain)
 
 4. Pre-calculate ten nearest neighbors for each word in each embedding space
-	- Run precalculateNearestNeighbors_nyt.py and precalculateNearestNeighbors_europarl.py
+	- Run precalculateNearestNeighbors_nyt.py and precalculateNearestNeighbors_europarl.py (Run precalculateNearestNeighbors_nyt.py six different times - one for each different NYT domain)
 
 5. Get shared word list
 	- Run sharedWordList.py
 
 6. Generate all classifier features
+	- First install CMU dictionary, Brown dataset, and Universal tagset from NLTK (Python):
+```
+>>> import nltk
+>>> nltk.download('cmudict')
+>>> nltk.download('brown')
+>>> nltk.download('universal_tagset')
+```
 	- Run generateClassifierFeatures.py
 
 7. Train regression model
 	- Run regressionModel.py
+
+8. View results from regression model
+	- Run viewResults.py

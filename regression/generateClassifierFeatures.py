@@ -23,7 +23,7 @@ EUROPARL_WORDLIST_FILE = datasetFolder+'europarl/wordList.pkl' #Location of Euro
 SHARED_WORDLIST_FILE = datasetFolder+'combinedWordList.pkl' #Shared word list (see sharedWordList.py)
 NYT_NEAREST_NEIGHBORS_FOLDER = datasetFolder+'nyt_corpus/metaClassifier/tenNearestNeighbors/' #Location of all pre-calculated nearest neighbors for NYT dataset
 EUROPARL_NEAREST_NEIGHBORS_FOLDER = datasetFolder+'europarl/metaClassifier/tenNearestNeighbors/' #Location of all pre-calculated nearest neighbors for Europarl dataset
-OUTPUT_Folder = datasetFolder+'metaClassifier/' #Save all features here
+OUTPUT_FOLDER = datasetFolder+'metaClassifier/' #Save all features here
 
 if len(sys.argv) < 3:
     print('This program takes two arguments: a start index (inclusive) and an end index (exclusive) for training')
@@ -203,7 +203,7 @@ def bagOfAlgorithmsFeatures(algorithm1,algorithm2):
     
     #Bag of algorithms: Is algorithm 1 represented? Is algorithm 2 represented? etc. (Each feature is 0, 1,
     #or 2)
-    algorithms = ['w2v_singleCore','ppmi','glove']
+    algorithms = ['w2v','ppmi','glove']
     algorithmsRepresented = [0] * len(algorithms)
     algorithmsRepresented[algorithms.index(algorithm1)] += 1
     algorithmsRepresented[algorithms.index(algorithm2)] += 1
@@ -266,6 +266,7 @@ print('all')
 domains.append('all')
 with open(NYT_FOLDER+'top5.data','r') as domainFile:
     sentences = domainFile.readlines()
+	data['all'] = [i[:-1].split(' ') for i in sentences]
 with open(NYT_WORDLIST_FOLDER+'all_wordList.pkl','rb') as pickleFile:
     wordlists.append(pickle.load(pickleFile))
 
@@ -336,7 +337,7 @@ names = []
 for domain in domains:
     root = NYT_NEAREST_NEIGHBORS_FOLDER
     if domain == 'Europarl':
-        root = NYT_NEAREST_NEIGHBORS_FOLDER
+        root = EUROPARL_NEAREST_NEIGHBORS_FOLDER
     for dimension in [50,100,200,400,800]:
         #Load w2v
         data_temp = []
