@@ -34,12 +34,12 @@ The following files and instructions can be used to reproduce the regression mod
 
 6. Generate all classifier features
 	- First install CMU dictionary, Brown dataset, and Universal tagset from NLTK (Python):
-```
->>> import nltk
->>> nltk.download('cmudict')
->>> nltk.download('brown')
->>> nltk.download('universal_tagset')
-```
+		```
+		>>> import nltk
+		>>> nltk.download('cmudict')
+		>>> nltk.download('brown')
+		>>> nltk.download('universal_tagset')
+		```
 	- Run generateClassifierFeatures.py
 
 7. Train regression model
