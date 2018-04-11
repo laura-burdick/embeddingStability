@@ -21,7 +21,7 @@ with open(TRAINING_DATA_FILE,'rb') as pickleFile:
 with open(TRAINING_TARGET_FILE,'rb') as pickleFile:
 	y = pickle.load(pickleFile)
 
-print("Scoring...")
+print("Scoring... (*slow*)")
 score = model.score(X,y)
 print("Model has an R^2 score of " + str(score) + " on the training data.")
 
@@ -92,4 +92,5 @@ labels.append('Abs. difference in embedding dimension for algorithms')
 labels.append('Do the two dimensions match?')
 
 print("Here are the weights of the model:")
-print(sorted(zip(weights,labels)))
+for (weight,feature) in sorted(zip(weights,labels)):
+	print(weight,feature)
