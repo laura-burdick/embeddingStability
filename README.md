@@ -24,7 +24,7 @@ year = {2018}
 
 **example.py**: A toy example of how to use the stability code
 
-**Regression Model**: Code to replicate the regression model found in the paper (Quick Start guide [here](regression/README.md))
+**Regression Model**: Code to replicate the regression model found in the paper, as well as a pre-trained model (Quick Start guide [here](regression/README.md))
 
 ## Acknowledgements
 We would like to thank Ben King and David Jurgens for helpful discussions about this paper, as well as our anonymous reviewers for useful feedback. This material is based in part upon work supported by the National Science Foundation (NSF \#1344257) and the Michigan Institute for Data Science (MIDAS). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the NSF or MIDAS. 
