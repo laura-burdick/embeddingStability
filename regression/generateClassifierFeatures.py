@@ -53,12 +53,12 @@ def stability(word,similar1,similar2,same=False):
         avgOverlap /= (len(similar1)*len(similar2))
     return avgOverlap
 
-def frequencyFeatures(counters,domains,domain1,domain2,word):
+def frequencyFeatures(counters,domains,domain1,domain2,word): #NOTE: This is raw frequency, not normalized frequency
     features = []
     
-    #Higher normalized freq. of word in either corpus A or corpus B
-    #Lower normalized freq. of word in either corpus A or corpus B
-    #Abs. difference in normalized freq. of words in corpus A and B
+    #Higher RAW freq. of word in either corpus A or corpus B
+    #Lower RAW freq. of word in either corpus A or corpus B
+    #Abs. difference in RAW freq. of words in corpus A and B
     frequency1 = counters[domains.index(domain1)][word]
     frequency2 = counters[domains.index(domain2)][word]
     if frequency1 > frequency2:
@@ -221,7 +221,7 @@ def bagOfAlgorithmsFeatures(algorithm1,algorithm2):
 def corpusFeatures(trainingDataPositions,vocabOverlap,counters,domains,domain1,domain2,word,wordlists):
     features = []
    
-    features = features + frequencyFeatures(counters,domains,domain1,domain2,word)
+    features = features + frequencyFeatures(counters,domains,domain1,domain2,word) #NOTE: this is raw frequency, not normalized frequency
     features = features + vocabSizeFeatures(wordlists,domains,domain1,domain2)
     features = features + bagOfDomainsFeatures(domains,domain1,domain2)
     features = features + vocabOverlapFeatures(vocabOverlap,domain1,domain2)
@@ -394,7 +394,7 @@ for index in range(start_index,end_index):
 
     for domain1 in domains:
         for domain2 in domains:    
-            corpus_features = corpusFeatures(trainingDataPositions,vocabOverlap,counters,domains,domain1,domain2,word,wordlists)
+            corpus_features = corpusFeatures(trainingDataPositions,vocabOverlap,counters,domains,domain1,domain2,word,wordlists) #NOTE: This is using raw frequency, not normalized frequency
 
             for algorithm1 in ['w2v','glove','ppmi']:
                 for algorithm2 in ['w2v','glove','ppmi']:

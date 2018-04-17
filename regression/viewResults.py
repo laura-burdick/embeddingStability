@@ -58,9 +58,9 @@ labels.append('Number of different WordNet senses')
 #syllableFeatures
 labels.append('Number of syllables (0 if unknown)')
 #frequencyFeatures
-labels.append('Higher normalized freq. of word in corpora')
-labels.append('Lower normalized freq. of word in corpora')
-labels.append('Abs. difference in normalized freq. of words corpora')
+labels.append('Higher raw freq. of word in corpora')
+labels.append('Lower raw freq. of word in corpora')
+labels.append('Abs. difference in raw freq. of words corpora')
 #vocabSizeFeatures
 labels.append('Higher vocabulary size of corpora')
 labels.append('Lower vocabulary size of corpora')
