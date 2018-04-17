@@ -9,7 +9,17 @@
 - Python Scikit-Learn (http://scikit-learn.org/stable/)
 - Python TQDM (https://pypi.python.org/pypi/tqdm)
 
-## Quick Start
+## Pre-trained Model
+If you're not interested in training the model yourself, I've included a pre-trained model (regressionModel.pkl). This was pickled using Python 3.6.3., so you might run into problems if you're not using this version. This is a sklearn Ridge Regression model (see sklearn.linear_model.Ridge), and you can find the list of features used to train it in viewResults.txt.
+
+To use the model, in Python:
+```
+import pickle
+with open('regressionModel.pkl','rb') as pickleFile:
+	model = pickle.load(pickleFile)
+```
+
+## Training the Regression Model
 The following files and instructions can be used to reproduce the regression model described in the paper. (Please NOTE that all of this code needs to be run with Python 3, not Python 2.7!)
 
 1. Pre-process data
