@@ -1,12 +1,12 @@
 # Factors Influencing the Surprising Instability of Word Embeddings
-Laura Wendlandt, Jonathan K. Kummerfeld, Rada Mihalcea
+Laura (Wendlandt) Burdick, Jonathan K. Kummerfeld, Rada Mihalcea
 
 Language and Information Technologies (LIT)
 
 University of Michigan
 
 ## Introduction
-The code in this repository was used in the paper "Factors Influencing the Surprising Instability of Word Embeddings" by Wendlandt, et al. I have tried to document it well, but at the end of the day, it is research code, so if you have any problems using it, please get in touch with Laura Wendlandt (wenlaura@umich.edu).
+The code in this repository was used in the paper "Factors Influencing the Surprising Instability of Word Embeddings" by Wendlandt, et al. I have tried to document it well, but at the end of the day, it is research code, so if you have any problems using it, please get in touch with Laura Burdick (lburdick@umich.edu).
 
 ## Citation Information
 If you use this code, please cite the following paper:
