@@ -11,10 +11,13 @@ The code in this repository was used in the paper "Factors Influencing the Surpr
 ## Citation Information
 If you use this code, please cite the following paper:
 ```
-@article{Wendlandt18Surprising,
-author = {Wendlandt, L. and J. Kummerfeld and R. Mihalcea},
+@inproceedings{Wendlandt18Surprising,
+author = {Wendlandt, Laura and Kummerfeld, Jonathan K. and Mihalcea, Rada},
 title = {Factors Influencing the Surprising Instability of Word Embeddings},
-journal = {NAACL-HLT},
+pages = "2092--2102",
+url = "https://www.aclweb.org/anthology/N18-1190",
+doi = "10.18653/v1/N18-1190",
+booktitle = "Proceedings of the 2018 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies",
 year = {2018}
 }
 ```
